@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using API_Investigacion.Models;
+using API_Investigacion.Interfaces;
+using API_Investigacion.util;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IMensajeriaService, EmailMessage>();
 
 builder.Services.AddDbContext<DbContextInvestigacion>(
     options => options.UseSqlServer(

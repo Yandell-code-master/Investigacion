@@ -11,6 +11,8 @@ namespace API_Investigacion.Models
 
         }
         public DbSet<Producto> Productos { get; set; }
+        public DbSet<Factura> Facturas { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
     }
 }
