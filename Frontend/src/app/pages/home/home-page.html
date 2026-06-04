@@ -1,0 +1,77 @@
+<header>
+    <h1>Sistema de Gestión Comercial</h1>
+</header>
+
+<nav>
+
+    <a routerLink="/" class="active">
+
+        Inicio
+
+    </a>
+
+    <a routerLink="/clientes">
+        Clientes
+    </a>
+
+    <a routerLink="/productos">
+        Productos
+    </a>
+
+    <a routerLink="/facturas">
+        Facturas
+    </a>
+
+</nav>
+
+<main class="container">
+
+    <section class="card">
+
+        <h2>Bienvenido a BigFOOD Services</h2>
+
+        <p>
+            BigFOOD Services es una aplicación web desarrollada bajo una arquitectura desacoplada utilizando Angular
+            para el frontend y ASP.NET Core Web API para el backend. El sistema permite gestionar información comercial
+            mediante módulos independientes que se comunican a través de servicios HTTP.
+        </p>
+
+        <p>
+            La aplicación implementa operaciones CRUD para la administración de clientes, productos y facturas,
+            utilizando una base de datos SQL Server y Entity Framework para el acceso a los datos. Esta separación entre
+            interfaz y lógica de negocio facilita el mantenimiento, la escalabilidad y la reutilización de los
+            componentes del sistema.
+        </p>
+
+        <p>
+            A través de los módulos disponibles, es posible consultar, registrar, actualizar y eliminar información de
+            manera dinámica, aprovechando las ventajas de una Single Page Application (SPA) desarrollada con Angular.
+        </p>
+
+        <h3>Módulos disponibles</h3>
+
+        <div class="module-grid">
+
+            <button class="button" routerLink="/clientes">
+
+                Clientes
+
+            </button>
+
+            <button class="module-link" routerLink="/productos">
+
+                Productos
+
+            </button>
+
+            <button class="module-link" routerLink="/facturas">
+
+                Facturas
+
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
