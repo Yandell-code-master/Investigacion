@@ -1,0 +1,154 @@
+<header>
+    <h1>BigFOOD Services</h1>
+</header>
+
+<nav>
+
+
+<a routerLink="/">
+    Inicio
+</a>
+
+<a routerLink="/clientes">
+    Clientes
+</a>
+
+<a routerLink="/productos" class="active">
+    Productos
+</a>
+
+<a routerLink="/facturas">
+    Facturas
+</a>
+
+
+</nav>
+
+<main class="container">
+
+
+<section class="card">
+
+    <h2>Productos</h2>
+
+    <form>
+
+        <input
+            type="text"
+            placeholder="Código Interno"
+            [(ngModel)]="nuevoCodigoInterno"
+            name="codigoInterno">
+
+        <input
+            type="text"
+            placeholder="Código de Barras"
+            [(ngModel)]="nuevoCodigoBarra"
+            name="codigoBarra">
+
+        <input
+            type="text"
+            placeholder="Descripción"
+            [(ngModel)]="nuevaDescripcion"
+            name="descripcion">
+
+        <input
+            type="number"
+            placeholder="Precio de Venta"
+            [(ngModel)]="nuevoPrecioVenta"
+            name="precioVenta">
+
+        <input
+            type="number"
+            placeholder="Existencia"
+            [(ngModel)]="nuevaExistencia"
+            name="existencia">
+
+        <button
+            type="button"
+            (click)="saveProducto()">
+
+            {{ modoEdicion
+            ? 'Actualizar Producto'
+            : 'Guardar Producto' }}
+
+        </button>
+
+        @if(modoEdicion) {
+
+        <button
+            type="button"
+            (click)="cancelarEdicion()">
+
+            Cancelar
+
+        </button>
+
+        }
+
+    </form>
+
+</section>
+
+<section class="card">
+
+    <h3>Lista de Productos</h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Código</th>
+                <th>Barra</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Existencia</th>
+                <th>Acciones</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for(producto of productos(); track producto.codigoInterno) {
+
+            <tr>
+
+                <td>{{ producto.codigoInterno }}</td>
+                <td>{{ producto.codigoBarra }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.precioVenta }}</td>
+                <td>{{ producto.existencia }}</td>
+
+                <td>
+
+                    <button
+                        type="button"
+                        (click)="editarProducto(producto)">
+
+                        Editar
+
+                    </button>
+
+                    <button
+                        type="button"
+                        (click)="deleteProducto(producto.codigoInterno)">
+
+                        Eliminar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+</main>
