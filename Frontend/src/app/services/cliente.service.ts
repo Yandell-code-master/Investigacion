@@ -30,4 +30,35 @@ export class ClienteService {
             }
         );
     }
+
+    search(id: number) {
+
+        return this.http.get<Cliente>(
+            `${this.apiUrl}/Search?id=${id}`
+        );
+
+    }
+
+    update(cliente: Cliente) {
+
+        return this.http.put(
+            `${this.apiUrl}/Update`,
+            cliente,
+            {
+                responseType: 'text'
+            }
+        );
+
+    }
+
+    delete(id: number) {
+
+        return this.http.delete(
+            `${this.apiUrl}/Delete?id=${id}`,
+            {
+                responseType: 'text'
+            }
+        );
+
+    }
 }

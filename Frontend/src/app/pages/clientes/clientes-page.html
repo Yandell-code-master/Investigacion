@@ -1,5 +1,5 @@
 <header>
-    <h1>Sistema de Gestión Comercial</h1>
+    <h1>BigFOOD Services</h1>
 </header>
 
 <nav>
@@ -25,16 +25,27 @@
     <section class="card">
 
         <h2>Clientes</h2>
-
         <form>
 
             <input type="text" placeholder="Nombre del cliente" [(ngModel)]="nuevoNombre" name="nombre">
 
             <button type="button" (click)="saveCliente()">
 
-                Guardar Cliente
+                {{ modoEdicion
+                ? 'Actualizar Cliente'
+                : 'Guardar Cliente' }}
 
             </button>
+
+            @if(modoEdicion) {
+
+            <button type="button" (click)="cancelarEdicion()">
+
+                Cancelar
+
+            </button>
+
+            }
 
         </form>
 
@@ -51,6 +62,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Acciones</th>
                 </tr>
 
             </thead>
@@ -69,6 +81,21 @@
                         {{ cliente.nombre }}
                     </td>
 
+                    <td>
+
+                        <button type="button" (click)="editarCliente(cliente)">
+
+                            Editar
+
+                        </button>
+
+                        <button type="button" (click)="deleteCliente(cliente.id)">
+
+                            Eliminar
+
+                        </button>
+
+                    </td>
                 </tr>
 
                 }
