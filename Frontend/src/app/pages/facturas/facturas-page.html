@@ -1,0 +1,67 @@
+<header>
+    <h1>BigFOOD Services</h1>
+</header>
+
+<nav>
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/clientes">Clientes</a>
+    <a routerLink="/productos">Productos</a>
+    <a routerLink="/facturas" class="active">Facturas</a>
+</nav>
+
+<main class="container">
+
+    <section class="card">
+        <h2>Gestión de Facturas</h2>
+        <form>
+            Cliente ID
+            <input type="number" placeholder="ID del Cliente" [(ngModel)]="clienteId" name="clienteId">
+            Monto Total
+            <input type="number" step="0.01" placeholder="Total de la factura" [(ngModel)]="total" name="total"> 
+
+            <button type="button" (click)="saveFactura()">
+                {{ modoEdicion ? 'Actualizar Factura' : 'Guardar Factura' }}
+            </button>
+
+            @if(modoEdicion) {
+                <button type="button" (click)="cancelarEdicion()">
+                    Cancelar
+                </button>
+            }
+        </form>
+    </section>
+
+    <section class="card">
+        <h3>Lista de Facturas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente ID</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(factura of facturas(); track factura.id) {
+                <tr>
+                    <td>{{ factura.id }}</td>
+                    <td>{{ factura.clienteId }}</td>
+                    <td>{{ factura.fechaEmision | date:'short' }}</td>
+                    <td>{{ factura.total | currency:'USD':'symbol':'1.2-2' }}</td>
+                    <td>
+                        <button type="button" (click)="editarFactura(factura)">
+                            Editar
+                        </button>
+                        <button type="button" (click)="deleteFactura(factura.id)">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+
+</main>
