@@ -1,0 +1,109 @@
+<header>
+    <h1>BigFOOD Services</h1>
+</header>
+
+<nav>
+    <a routerLink="/">
+        Inicio
+    </a>
+
+    <a routerLink="/clientes" class="active">
+        Clientes
+    </a>
+
+    <a routerLink="/productos">
+        Productos
+    </a>
+
+    <a routerLink="/facturas">
+        Facturas
+    </a>
+</nav>
+
+<main class="container">
+
+    <section class="card">
+
+        <h2>Clientes</h2>
+        <form>
+
+            <input type="text" placeholder="Nombre del cliente" [(ngModel)]="nuevoNombre" name="nombre">
+
+            <button type="button" (click)="saveCliente()">
+
+                {{ modoEdicion
+                ? 'Actualizar Cliente'
+                : 'Guardar Cliente' }}
+
+            </button>
+
+            @if(modoEdicion) {
+
+            <button type="button" (click)="cancelarEdicion()">
+
+                Cancelar
+
+            </button>
+
+            }
+
+        </form>
+
+    </section>
+
+    <section class="card">
+
+        <h3>Lista de Clientes</h3>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @for(cliente of clientes(); track cliente.id) {
+
+                <tr>
+
+                    <td>
+                        {{ cliente.id }}
+                    </td>
+
+                    <td>
+                        {{ cliente.nombre }}
+                    </td>
+
+                    <td>
+
+                        <button type="button" (click)="editarCliente(cliente)">
+
+                            Editar
+
+                        </button>
+
+                        <button type="button" (click)="deleteCliente(cliente.id)">
+
+                            Eliminar
+
+                        </button>
+
+                    </td>
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
